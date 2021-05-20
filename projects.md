@@ -7,7 +7,7 @@ title: Projects
 {% include technologies.html technologies="git rust" %}
 
 <p></p>
-<video width="720" height="auto" controls loop>
+<video controls loop>
   <source src="https://user-images.githubusercontent.com/14340000/117508795-27d1ab80-af57-11eb-9566-2863e8106ed3.mov">
 Your browser does not support the video tag.
 </video>
