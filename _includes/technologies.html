@@ -1,0 +1,7 @@
+<div id="tech-stack">
+    Technologies:   
+    {% assign tech = include.technologies | split: ' ' %}
+    {% for entry in tech %}
+        <i class="fab fa-{{ entry }} fa-lg"></i>
+    {% endfor %}
+</div>
