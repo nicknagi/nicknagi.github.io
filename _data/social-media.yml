@@ -1,0 +1,17 @@
+email:
+  id: 'nekhilnagia16@gmail.com'
+  href: 'mailto:'
+  title: 'Email'
+  fa-icon: 'fa-envelope-square fa-3x'
+
+github:
+  id: 'nicknagi'
+  href: 'https://github.com/'
+  title: 'GitHub'
+  fa-icon: 'fa-github-square fa-3x'
+
+linkedin:
+  id: 'nekhil-nagia-5153a7b1'
+  href: 'https://www.linkedin.com/in/'
+  title: 'Linkedin'
+  fa-icon: 'fa-linkedin-square fa-3x'
