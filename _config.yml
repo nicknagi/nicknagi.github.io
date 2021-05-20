@@ -1,2 +1,5 @@
 theme: jekyll-theme-cayman
 google_analytics: G-0TLQJN80GV
+url: "https://nicknagi.github.io" # the base hostname & protocol for your site
+plugins:
+  - jekyll-sitemap
