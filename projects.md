@@ -5,7 +5,7 @@ title: Projects
 
 ## Physics Simulator
 
-<video width="720" height="460" controls>
+<video width="720" height="460" controls loop>
   <source src="/assets/videos/collisions.mp4">
 Your browser does not support the video tag.
 </video>
