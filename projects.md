@@ -14,7 +14,7 @@ Your browser does not support the video tag.
 
 A newtonian physics simulator built in Rust. The main goal of the project was to learn the Rust programming language. 
 
-Particles are modelled as circles in 2D space. Collision detection and elastic collisions is also supported.
+Particles are modelled as circles in 2D space. Collision detection is used to simulate elastic collisions.
 
 [Github Repository](https://github.com/nicknagi/rust-physics-simulation)
 
