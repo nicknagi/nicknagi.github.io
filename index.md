@@ -3,8 +3,6 @@ layout: default
 title: Nekhil Nagia
 ---
 
-Note: As of May 20, 2021 this site is still under development
-
 Hello there! 
 
 My name is Nekhil Nagia, I am an undergraduate student at the University of Toronto currently pursuing a degree in computer engineering with a robotics and mechatronics minor. I will be graduating June 2021.
