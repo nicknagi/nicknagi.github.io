@@ -3,6 +3,8 @@ layout: default
 title: Projects
 ---
 
+# 2021
+----------------------
 ## Physics Simulator
 {% include technologies.html technologies="git rust" %}
 
@@ -18,3 +20,10 @@ Particles are modelled as circles in 2D space. Collision detection is used to si
 
 [Github Repository](https://github.com/nicknagi/rust-physics-simulation)
 
+
+## Course Project: Distributed Key-Value Store
+{% include technologies.html technologies="git java" %}
+
+Project done as part of Winter 2021 ECE419 Distributed Systems course.
+
+A distributed key-value store implemented from scratch in Java. The database uses consistent hashing to distribute keys among the nodes in the cluster. Replication is used to achieve fault-tolerance.
