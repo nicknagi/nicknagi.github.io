@@ -2,6 +2,6 @@
     Technologies:   
     {% assign tech = include.technologies | split: ' ' %}
     {% for entry in tech %}
-        <i class="fab fa-{{ entry }} fa-lg"></i>
+        <i class="fab fa-{{ entry }} fa-lg" title="{{ entry }}"></i>
     {% endfor %}
 </div>
