@@ -3,6 +3,18 @@ layout: default
 title: Projects
 ---
 
+# 2022
+----------------------
+## Federated Learning For WiFi Fingerprinting
+{% include technologies.html technologies="git python" %}
+
+Research project involving applying state-of-the-art ML learning methods to the field of wireless communications. Research was conducted at the University of Toronto WirLab lead by Prof. Shahrokh Valaee and under the guidance of a PhD student.
+
+First author on a paper published at the International Conference on Communcations 2022 at Seoul, South Korea.
+
+[Paper](https://ieeexplore.ieee.org/document/9838945)
+
+
 # 2021
 ----------------------
 ## Assesing The Scalability Of Semantic-Aware Resource Characterization and Prediction (SAWCAP) Algorithm
