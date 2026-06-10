@@ -73,51 +73,6 @@ title: Projects
     </div>
   </div>
 
-  <div class="project-card show" data-tags="ml python">
-    <div class="project-card-header">
-      <h3 class="project-title">Executing Assembly With Deep Learning</h3>
-      <span class="project-date">2021</span>
-    </div>
-    {% include technologies.html technologies="git python" %}
-    <p class="project-description">
-      A sequence-to-sequence LSTM model to run a sequence of assembly instructions and output the final register states. More can be found in the project's GitHub repository.
-    </p>
-    <div class="project-links">
-      <a href="https://github.com/nicknagi/assembly-execution-rnn" target="_blank" class="project-link-btn"><i class="fab fa-github"></i> GitHub</a>
-    </div>
-  </div>
-
-  <div class="project-card show" data-tags="systems java">
-    <div class="project-card-header">
-      <h3 class="project-title">Distributed Key-Value Store</h3>
-      <span class="project-date">2021</span>
-    </div>
-    {% include technologies.html technologies="git java" %}
-    <p class="project-description">
-      Project done as part of Winter 2021 ECE419 Distributed Systems course.
-    </p>
-    <p class="project-description">
-      A distributed key-value store implemented from scratch in Java. The database uses consistent hashing to distribute keys among the nodes in the cluster. Replication is used to achieve fault-tolerance.
-    </p>
-  </div>
-
-  <div class="project-card show" data-tags="ml python">
-    <div class="project-card-header">
-      <h3 class="project-title">Course Project: Waste Classification</h3>
-      <span class="project-date">2021</span>
-    </div>
-    {% include technologies.html technologies="git python" %}
-    <p class="project-description">
-      Project done as part of Winter 2021 APS360 Artificial Intelligence Fundamentals course.
-    </p>
-    <p class="project-description">
-      A CNN model to categorize waste as organic or recyclable.
-    </p>
-    <div class="project-links">
-      <a href="https://github.com/nicknagi/APS360" target="_blank" class="project-link-btn"><i class="fab fa-github"></i> GitHub</a>
-    </div>
-  </div>
-
 </div>
 
 <script>
