@@ -1,7 +1,22 @@
-<div id="tech-stack">
-    Technologies:   
-    {% assign tech = include.technologies | split: ' ' %}
-    {% for entry in tech %}
-        <i class="fab fa-{{ entry }} fa-lg" title="{{ entry }}"></i>
-    {% endfor %}
+<div class="tech-stack-container">
+  {% assign tech = include.technologies | split: ' ' %}
+  {% for entry in tech %}
+    <span class="tech-badge badge-{{ entry }}">
+      {% if entry == 'python' %}
+        <i class="fab fa-python"></i> Python
+      {% elsif entry == 'rust' %}
+        <i class="fas fa-cube"></i> Rust
+      {% elsif entry == 'git' %}
+        <i class="fab fa-git-alt"></i> Git
+      {% elsif entry == 'aws' %}
+        <i class="fab fa-aws"></i> AWS
+      {% elsif entry == 'digital-ocean' %}
+        <i class="fab fa-digital-ocean"></i> DigitalOcean
+      {% elsif entry == 'java' %}
+        <i class="fab fa-java"></i> Java
+      {% else %}
+        {{ entry | capitalize }}
+      {% endif %}
+    </span>
+  {% endfor %}
 </div>

@@ -1,25 +1,547 @@
 ---
 ---
 
-@import "{{ site.theme }}";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
-.fab {
-    color : lightseagreen;
+// Design Tokens & Variable System
+:root {
+  // Light Mode Colors
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --border-color: #e2e8f0;
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-rgb: 37, 99, 235;
+  --accent-color: #0ea5e9;
+  --header-bg: linear-gradient(135deg, #1e3a8a, #0f172a);
+  --header-text: #ffffff;
+  
+  // Badges Colors (Light Theme)
+  --badge-bg-default: #f1f5f9;
+  --badge-text-default: #475569;
+  
+  --badge-bg-python: rgba(53, 114, 165, 0.1);
+  --badge-text-python: #1e4b70;
+  
+  --badge-bg-rust: rgba(184, 61, 19, 0.1);
+  --badge-text-rust: #b83d13;
+  
+  --badge-bg-git: rgba(240, 80, 50, 0.1);
+  --badge-text-git: #c22f17;
+  
+  --badge-bg-aws: rgba(255, 153, 0, 0.1);
+  --badge-text-aws: #b25e00;
+  
+  --badge-bg-digital-ocean: rgba(0, 105, 255, 0.1);
+  --badge-text-digital-ocean: #0056d2;
+  
+  --badge-bg-java: rgba(163, 29, 29, 0.1);
+  --badge-text-java: #a31d1d;
+
+  // Elevation & Shadows
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  // Layout Widths
+  --content-width: 900px;
 }
 
-.fas {
-  color : lightseagreen;
+:root.dark-theme {
+  // Dark Mode Colors
+  --bg-primary: #090d16;
+  --bg-secondary: #111827;
+  --bg-card: #151e33;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --border-color: #1e293b;
+  --primary-color: #3b82f6;
+  --primary-hover: #60a5fa;
+  --primary-rgb: 59, 130, 246;
+  --accent-color: #38bdf8;
+  --header-bg: linear-gradient(135deg, #0b152d, #020617);
+  --header-text: #f8fafc;
+
+  // Badges Colors (Dark Theme)
+  --badge-bg-default: #1e293b;
+  --badge-text-default: #94a3b8;
+  
+  --badge-bg-python: rgba(53, 114, 165, 0.2);
+  --badge-text-python: #60a5fa;
+  
+  --badge-bg-rust: rgba(184, 61, 19, 0.2);
+  --badge-text-rust: #f97316;
+  
+  --badge-bg-git: rgba(240, 80, 50, 0.2);
+  --badge-text-git: #f87171;
+  
+  --badge-bg-aws: rgba(255, 153, 0, 0.2);
+  --badge-text-aws: #fbbf24;
+  
+  --badge-bg-digital-ocean: rgba(0, 105, 255, 0.2);
+  --badge-text-digital-ocean: #60a5fa;
+  
+  --badge-bg-java: rgba(163, 29, 29, 0.2);
+  --badge-text-java: #f87171;
+
+  // Elevation & Shadows
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
 }
 
-#current {
-  background-color: rgba(32, 76, 178, 0.3);
+// Reset & Base Styles
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-video {
-  height: 100%;
-  width: 100%;
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
 }
 
-.fa-java {
-  font-size: 2em;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.25;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: var(--primary-hover);
+  }
+}
+
+// Header Section (Modern Cayman Adaptation)
+.page-header {
+  background: var(--header-bg);
+  color: var(--header-text);
+  padding: 3.5rem 2rem;
+  text-align: center;
+  position: relative;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  
+  .project-name {
+    font-size: 2.75rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.03em;
+    background: linear-gradient(120deg, #ffffff, #93c5fd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .project-tagline {
+    font-size: 1.15rem;
+    font-weight: 300;
+    opacity: 0.85;
+    margin-bottom: 2rem;
+    color: #e2e8f0;
+  }
+}
+
+// Navigation Styling
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+
+  .btn {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 9999px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(4px);
+
+    &:hover {
+      color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-1px);
+    }
+
+    &#current {
+      background-color: #ffffff;
+      color: #0f172a;
+      border-color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  }
+}
+
+// Social Media Links in Header
+#social-media {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+
+  a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+    transition: all 0.2s ease;
+    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: scale(1.1);
+    }
+  }
+}
+
+// Main Content Layout
+.main-content {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  
+  // Custom spacing & typography inside main
+  p {
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    margin: 2.5rem 0 1.25rem 0;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+  }
+}
+
+// Floating Theme Toggle Button
+.theme-toggle-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+
+  &:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-color);
+  }
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+  }
+  
+  .sun-icon {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+  
+  .moon-icon {
+    opacity: 0;
+    transform: rotate(90deg);
+  }
+}
+
+:root.dark-theme {
+  .theme-toggle-btn {
+    .sun-icon {
+      opacity: 0;
+      transform: rotate(-90deg);
+    }
+    
+    .moon-icon {
+      opacity: 1;
+      transform: rotate(0deg);
+    }
+  }
+}
+
+// Badges Styles
+.tech-stack-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  background-color: var(--badge-bg-default);
+  color: var(--badge-text-default);
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+
+  i {
+    font-size: 0.9rem;
+  }
+
+  &.badge-python { background-color: var(--badge-bg-python); color: var(--badge-text-python); }
+  &.badge-rust { background-color: var(--badge-bg-rust); color: var(--badge-text-rust); }
+  &.badge-git { background-color: var(--badge-bg-git); color: var(--badge-text-git); }
+  &.badge-aws { background-color: var(--badge-bg-aws); color: var(--badge-text-aws); }
+  &.badge-digital-ocean { background-color: var(--badge-bg-digital-ocean); color: var(--badge-text-digital-ocean); }
+  &.badge-java { background-color: var(--badge-bg-java); color: var(--badge-text-java); }
+}
+
+// Project Filtering Styles
+.filter-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+
+  .filter-label {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1.05rem;
+  }
+
+  .filter-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 0.4rem 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+
+    &:hover {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+    }
+
+    &.active {
+      background: var(--primary-color);
+      color: #ffffff;
+      border-color: var(--primary-color);
+      box-shadow: 0 4px 10px rgba(var(--primary-rgb), 0.2);
+    }
+  }
+}
+
+// Projects Card Grid Layout
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: scale(0.95);
+  display: none; // Controlled by JS
+
+  &.show {
+    display: flex;
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(var(--primary-rgb), 0.3);
+  }
+
+  .project-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+
+    .project-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .project-date {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      background-color: var(--bg-primary);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+  }
+
+  .project-description {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    
+    &:last-of-type {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .project-links {
+    margin-top: auto;
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .project-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-card);
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+
+    i {
+      font-size: 0.95rem;
+    }
+
+    &:hover {
+      color: var(--primary-color);
+      border-color: var(--primary-color);
+      background-color: rgba(var(--primary-rgb), 0.04);
+    }
+  }
+}
+
+// Custom Physics Video styling
+.project-video-wrapper {
+  margin: 1rem 0 1.25rem 0;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background-color: #000;
+  line-height: 0;
+  box-shadow: var(--shadow-sm);
+
+  .project-video {
+    width: 100%;
+    max-height: 380px;
+    object-fit: cover;
+  }
+}
+
+// Footer
+.site-footer {
+  margin-top: 4rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 2rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+// Media Queries for Mobile Responsiveness
+@media (max-width: 768px) {
+  .page-header {
+    padding: 2.5rem 1rem;
+    
+    .project-name {
+      font-size: 2.2rem;
+    }
+  }
+  
+  .filter-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .project-card {
+    padding: 1.25rem;
+    
+    .project-card-header {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      gap: 0.25rem;
+    }
+  }
+  
+  .theme-toggle-btn {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+  }
 }
